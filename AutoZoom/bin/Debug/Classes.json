@@ -1,0 +1,29 @@
+﻿{
+  "English": [
+    {
+      "hour": "14",
+      "minute": "28",
+      "Day1": "Tuesday",
+      "Day2": "Thursday",
+      "link": "https://bit.ly/3gpekx6%C2%A0"
+    }
+  ],
+  "CIS": [
+    {
+      "hour": "19",
+      "minute": "34",
+      "Day1": "Tuesday",
+      "Day2": "Thursday",
+      "link": "https://zoom.us/j/5102154784"
+    }
+  ],
+  "Test": [
+    {
+      "hour": "15",
+      "minute": "5",
+      "Day1": "Friday",
+      "Day2": "Monday",
+      "link": "https://meet.google.com/lookup/gos5bjzglx"
+    }
+  ]
+}
