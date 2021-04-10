@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -40,13 +41,8 @@ namespace AutoZoom
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             ClassTime();
-            //MidnightTimer1(new TimeSpan(00, 00, 00));
-            SetUpTimer2(new TimeSpan(11, 12, 00));
-            SetUpTimer3(new TimeSpan(8, 00, 00));
-            SetUpTimer4(new TimeSpan(11, 10, 00));
-            SetUpTimer5(new TimeSpan(12, 45, 00));
-            SetUpTimer6(new TimeSpan(2, 30, 00));
             this.label2.Text = "Status: On";
+            this.label2.BackColor = System.Drawing.Color.Green;
         }
 
         private void Info_gbox_Enter(object sender, EventArgs e)
@@ -153,139 +149,49 @@ namespace AutoZoom
 
         private void ClassTime()
         {
-            var oldJSONString = File.ReadAllText(jsonPath, Encoding.UTF8);
-            var parsedOldJSON = JValue.Parse(oldJSONString); 
+            string oldJSONString = File.ReadAllText(jsonPath);
+            JObject parsedOldJSON = JObject.Parse(oldJSONString);
 
-            foreach (dynamic i in parsedOldJSON)
+            foreach (var i in parsedOldJSON)
             {
-                if (DateTime.Now.DayOfWeek == i.Day1 || DateTime.Now.DayOfWeek == i.Day2)
-                {
-                    MidnightTimer1(new TimeSpan(Int32.Parse(i.hour), Int32.Parse(i.minute), 00), i.link);
-                   // if (DateTime.Now.Hour == i.hour && DateTime.Now.Minute == )
+                Console.WriteLine(i.Key);
 
+
+                string somethingElse = parsedOldJSON[i.Key].ToString();
+                dynamic parsedLink = JValue.Parse(somethingElse);
+
+                string linkParsed = parsedLink[0].ToString();
+                dynamic finalParse = JValue.Parse(linkParsed);
+                ;
+                var newDay1 = finalParse["Day1"].ToString();
+                var newDay2 = finalParse["Day2"].ToString();
+
+                var newHour = finalParse["hour"].ToString();
+                var newMinute = finalParse["minute"].ToString();
+
+                var newLink = finalParse["link"].ToString();
+
+                var currentDay = DateTime.Now.DayOfWeek.ToString();
+
+                if (currentDay == newDay1 || currentDay == newDay2)
+                {
+                    MidnightTimer1(new TimeSpan(Int32.Parse(newHour), Int32.Parse(newMinute), 00), newLink);
                 }
-                Console.WriteLine(i);
-               // System.Console.Write("{0} ", i);
+                Console.Write(newDay1);
+                Console.WriteLine(newDay2);
+
+                // System.Console.Write("{0} ", i);
+
             }
 
         }
         //-------
-        private void SetUpTimer2(TimeSpan alertTime)
-        {
-            DateTime current = DateTime.Now;
-            TimeSpan timeToGo = alertTime - current.TimeOfDay;
-            if (timeToGo < TimeSpan.Zero)
-            {
-                return;//time already passed
-            }
-            this.timer = new System.Threading.Timer(x =>
-            {
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Monday || DateTime.Now.DayOfWeek == DayOfWeek.Wednesday)
-                {
-                    historyZoomJoin();
-                }
-            }, null, timeToGo, Timeout.InfiniteTimeSpan);
-        }
-        //---------
-        private void SetUpTimer3(TimeSpan alertTime)
-        {
-            DateTime current = DateTime.Now;
-            TimeSpan timeToGo = alertTime - current.TimeOfDay;
-            if (timeToGo < TimeSpan.Zero)
-            {
-                return;//time already passed
-            }
-            this.timer = new System.Threading.Timer(x =>
-            {
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday || DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
-                {
-                    cisZoomJoin();
-                }
-
-            }, null, timeToGo, Timeout.InfiniteTimeSpan);
-        }
-        //-----------
-        private void SetUpTimer4(TimeSpan alertTime)
-        {
-            DateTime current = DateTime.Now;
-            TimeSpan timeToGo = alertTime - current.TimeOfDay;
-            if (timeToGo < TimeSpan.Zero)
-            {
-                return;//time already passed
-            }
-            this.timer = new System.Threading.Timer(x =>
-            {
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday || DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
-                {
-                    aframZoomJoin();
-                }
-
-            }, null, timeToGo, Timeout.InfiniteTimeSpan);
-        }
-        //-------
-        private void SetUpTimer5(TimeSpan alertTime)
-        {
-            DateTime current = DateTime.Now;
-            TimeSpan timeToGo = alertTime - current.TimeOfDay;
-            if (timeToGo < TimeSpan.Zero)
-            {
-                return;//time already passed
-            }
-            this.timer = new System.Threading.Timer(x =>
-            {
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday || DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
-                {
-                    englishZoomJoin();
-                }
-
-            }, null, timeToGo, Timeout.InfiniteTimeSpan);
-        }
-        //-----------
-        private void SetUpTimer6(TimeSpan alertTime)
-        {
-            DateTime current = DateTime.Now;
-            TimeSpan timeToGo = alertTime - current.TimeOfDay;
-            if (timeToGo < TimeSpan.Zero)
-            {
-                return;//time already passed
-            }
-            this.timer = new System.Threading.Timer(x =>
-            {
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday || DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
-                {
-                    //mathZoomJoin();
-                }
-            }, null, timeToGo, Timeout.InfiniteTimeSpan);
-        }
+       
         #endregion
         private void generalJoin(string link)
         {
             System.Diagnostics.Process.Start(link);
-        }
-        private void spanishZoomJoin()
-        {
-            System.Diagnostics.Process.Start("https://4cd.zoom.us/j/6224678408");
-        }
-        private void historyZoomJoin()
-        {
-            System.Diagnostics.Process.Start("https://meet.google.com/lookup/gos5bjzglx");
-        }
-        private void cisZoomJoin()
-        {
-            System.Diagnostics.Process.Start("https://zoom.us/j/5102154784");
-        }
-        private void englishZoomJoin()
-        {
-            System.Diagnostics.Process.Start("https://bit.ly/3gpekx6%C2%A0");
-        }
-        private void aframZoomJoin()
-        {
-            System.Diagnostics.Process.Start("https://wccusd.zoom.us/j/93825728642?pwd=RTlURnFHM0RvelNQZ0VGb0RpZnlnZz09");
-        }
-        private void Reg_data_Load(object sender, EventArgs e)
-        {
-            this.Info_gbox.Enabled = false;
-        }
+        }      
 
         private void label4_Click(object sender, EventArgs e)
         {
