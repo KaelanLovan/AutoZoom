@@ -111,9 +111,9 @@ namespace AutoZoom
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(7, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 42);
+            this.label1.Size = new System.Drawing.Size(180, 42);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Classes:";
+            this.label1.Text = "Meetings:";
             // 
             // label2
             // 
@@ -291,9 +291,9 @@ namespace AutoZoom
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(14, 75);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 25);
+            this.label12.Size = new System.Drawing.Size(74, 25);
             this.label12.TabIndex = 24;
-            this.label12.Text = "Class:";
+            this.label12.Text = "Name:";
             // 
             // toolStripSeparator3
             // 
