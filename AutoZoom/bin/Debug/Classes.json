@@ -1,11 +1,29 @@
 ﻿{
-  "English": [
+  "Test1": [
     {
-      "hour": "15",
-      "minute": "15",
+      "hour": "16",
+      "minute": "30",
       "Day1": "Saturday",
       "Day2": "Sunday",
-      "link": "https://bit.ly/3gpekx6%C2%A0"
+      "link": "https://google.com"
+    }
+  ],
+  "Test2": [
+    {
+      "hour": "8",
+      "minute": "0",
+      "Day1": "Monday",
+      "Day2": "Tuesday",
+      "link": "https://bing.com"
+    }
+  ],
+  "Test3": [
+    {
+      "hour": "11",
+      "minute": "10",
+      "Day1": "Friday",
+      "Day2": "",
+      "link": "https://yahoo.com"
     }
   ]
 }

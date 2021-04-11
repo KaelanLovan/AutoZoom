@@ -91,7 +91,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="json1.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,6 +113,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\saveIco.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auto.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\powerButton.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize-icon-65.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\darkTheme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\darkTheme1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightTheme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightgray.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\darkgray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\midgray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\auto %282%29.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
